@@ -128,6 +128,22 @@ public:
 
   auto operator-=(const Point2D &other) -> Point2D &;
 
+  /**
+   * @brief Overloaded multiplication operator
+   * @param scalar The scalar value
+   * @return Point2D The result of the multiplication operation
+   */
+
+  auto operator*(double scalar) const -> Point2D;
+
+  /**
+   * @brief Overloaded division operator
+   * @param scalar The scalar value
+   * @return Point2D The result of the division operation
+   */
+
+  auto operator/(double scalar) const -> Point2D;
+
 protected:
 private:
   double x_{0.0}; ///< x coordinate
