@@ -97,6 +97,21 @@ public:
    */
   [[nodiscard]] auto GetY() const -> double;
 
+  /**
+   * @brief Overloaded addition operator
+   * @param other The Point2D to be added
+   * @return Point2D The result of the addition operation
+   */
+
+  auto operator+(const Point2D &other) const -> Point2D;
+
+  /**
+   * @brief Overloaded subtraction operator
+   * @param other The Point2D to be subtracted
+   * @return Point2D The result of the subtraction operation
+   */
+  auto operator-(const Point2D &other) const -> Point2D;
+
 protected:
 private:
   double x_{0.0}; ///< x coordinate
