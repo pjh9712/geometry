@@ -86,6 +86,17 @@ public:
    */
   void SetY(double y);
 
+  /**
+   * @brief Get x coordinate value of this point
+   * @return double x coordinate value of this point
+   */
+  [[nodiscard]] auto GetX() const -> double;
+  /**
+   * @brief Get y coordinate value of this point
+   * @return double y coordinate value of this point
+   */
+  [[nodiscard]] auto GetY() const -> double;
+
 protected:
 private:
   double x_{0.0}; ///< x coordinate
