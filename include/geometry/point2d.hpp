@@ -75,6 +75,17 @@ public:
   [[nodiscard]] static auto CalculateDistance(const Point2D &lhs,
                                               const Point2D &rhs) -> double;
 
+  /**
+   * @brief Set x coordinate value
+   * @param x Double type input x coordinate value
+   */
+  void SetX(double x);
+  /**
+   * @brief Set y coordinate value
+   * @param y Double type input y coordinate value
+   */
+  void SetY(double y);
+
 protected:
 private:
   double x_{0.0}; ///< x coordinate
