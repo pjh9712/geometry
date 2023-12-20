@@ -13,4 +13,16 @@
 #ifndef GEOMETRY__POINT_2D_HPP_
 #define GEOMETRY__POINT_2D_HPP_
 
+namespace geometry {
+/**
+ * @brief Point class with 2-dimension
+ */
+class Point2D {
+public:
+protected:
+private:
+  double x_{0.0}; ///< x coordinate
+  double y_{0.0}; ///< y coordinate
+};
+} // namespace geometry
 #endif // GEOMETRY__POINT_2D_HPP_
