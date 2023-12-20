@@ -102,7 +102,6 @@ public:
    * @param other The Point2D to be added
    * @return Point2D The result of the addition operation
    */
-
   auto operator+(const Point2D &other) const -> Point2D;
 
   /**
@@ -117,7 +116,6 @@ public:
    * @param other The Point2D to be added
    * @return Point2D& Reference to the modified current Point2D object
    */
-
   auto operator+=(const Point2D &other) -> Point2D &;
 
   /**
@@ -125,7 +123,6 @@ public:
    * @param other The Point2D to be subtracted
    * @return Point2D& Reference to the modified current Point2D object
    */
-
   auto operator-=(const Point2D &other) -> Point2D &;
 
   /**
@@ -133,7 +130,6 @@ public:
    * @param scalar The scalar value
    * @return Point2D The result of the multiplication operation
    */
-
   auto operator*(double scalar) const -> Point2D;
 
   /**
@@ -141,8 +137,21 @@ public:
    * @param scalar The scalar value
    * @return Point2D The result of the division operation
    */
-
   auto operator/(double scalar) const -> Point2D;
+
+  /**
+   * @brief Overloaded equality operator
+   * @param other The Point2D to be compared with
+   * @return bool True if the coordinates are equal, otherwise false
+   */
+  auto operator==(const Point2D &other) const -> bool;
+
+  /**
+   * @brief Overloaded inequality operator
+   * @param other The Point2D to be compared with
+   * @return bool True if the coordinates are not equal, otherwise false
+   */
+  auto operator!=(const Point2D &other) const -> bool;
 
 protected:
 private:
