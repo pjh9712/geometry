@@ -198,4 +198,18 @@ TEST(GeometryPoint2D, DivisionOperator) {
   }
 }
 
+TEST(GeometryPoint2D, EqualityOperator) {
+  for (uint32_t i = 0; i < kTestCount; ++i) {
+    const auto KSourceX = static_cast<double>(std::rand());
+    const auto KSourceY = static_cast<double>(std::rand());
+
+    Point2D point1(KSourceX, KSourceY);
+    const Point2D& point2(point1);
+
+    EXPECT_TRUE(point1 == point2);
+
+    Point2D point3(KSourceX + 1.0, KSourceY);
+    EXPECT_FALSE(point1 == point3);
+  }
+}
 }  // namespace geometry
