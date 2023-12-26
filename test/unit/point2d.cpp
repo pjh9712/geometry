@@ -80,4 +80,28 @@ TEST(GeometryPoint2D, GetY) {
   }
 }
 
+TEST(GeometryPoint2D, SetX) {
+  for (uint32_t i = 0; i < kTestCount; ++i) {
+    const auto KSourceX = static_cast<double>(std::rand());
+
+    Point2D source;
+
+    source.SetX(KSourceX);
+
+    EXPECT_FLOAT_EQ(KSourceX, source.GetX());
+  }
+}
+
+TEST(GeometryPoint2D, SetY) {
+  for (uint32_t i = 0; i < kTestCount; ++i) {
+    const auto KSourceY = static_cast<double>(std::rand());
+
+    Point2D source;
+
+    source.SetY(KSourceY);
+
+    EXPECT_FLOAT_EQ(KSourceY, source.GetY());
+  }
+}
+
 }  // namespace geometry
