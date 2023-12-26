@@ -104,4 +104,20 @@ TEST(GeometryPoint2D, SetY) {
   }
 }
 
+TEST(GeometryPoint2D, AdditionOperator) {
+  for (uint32_t i = 0; i < kTestCount; ++i) {
+    const auto KSourceX1 = static_cast<double>(std::rand());
+    const auto KSourceY1 = static_cast<double>(std::rand());
+    const auto KSourceX2 = static_cast<double>(std::rand());
+    const auto KSourceY2 = static_cast<double>(std::rand());
+
+    Point2D point1(KSourceX1, KSourceY1);
+    Point2D point2(KSourceX2, KSourceY2);
+
+    Point2D result = point1 + point2;
+
+    EXPECT_FLOAT_EQ(result.GetX(), KSourceX1 + KSourceX2);
+    EXPECT_FLOAT_EQ(result.GetY(), KSourceY1 + KSourceY2);
+  }
+}
 }  // namespace geometry
