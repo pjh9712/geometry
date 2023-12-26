@@ -43,4 +43,20 @@ TEST(GeometryPoint2D, CalculateDistance) {
   }
 }
 
+TEST(GeometryPoint2D, StaticCalculateDistance) {
+  for (uint32_t i = 0; i < kTestCount; ++i) {
+    const auto KSourceX = static_cast<double>(std::rand());
+    const auto KSourceY = static_cast<double>(std::rand());
+    const auto KTargetX = static_cast<double>(std::rand());
+    const auto KTargetY = static_cast<double>(std::rand());
+
+    Point2D source(KSourceX, KSourceY);
+    Point2D target(KTargetX, KTargetY);
+
+    EXPECT_FLOAT_EQ(std::sqrt((KSourceX - KTargetX) * (KSourceX - KTargetX) +
+                              (KSourceY - KTargetY) * (KSourceY - KTargetY)),
+                    Point2D::CalculateDistance(source, target));
+  }
+}
+
 }  // namespace geometry
