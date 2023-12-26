@@ -26,4 +26,8 @@ auto Point2D::CalculateDistance(const Point2D& lhs, const Point2D& rhs)
   return std::sqrt(std::pow((lhs.x_ - rhs.x_), 2) +
                    std::pow((lhs.y_ - rhs.y_), 2));
 }
+
+auto Point2D::GetX() const -> double { return x_; }
+
+auto Point2D::GetY() const -> double { return y_; }
 }  // namespace geometry
