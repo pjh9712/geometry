@@ -177,4 +177,25 @@ TEST(GeometryPoint2D, MultiplicationOperator) {
   }
 }
 
+TEST(GeometryPoint2D, DivisionOperator) {
+  for (uint32_t i = 0; i < kTestCount; ++i) {
+    const auto KSourceX = static_cast<double>(std::rand());
+    const auto KSourceY = static_cast<double>(std::rand());
+    const auto KScalar = static_cast<double>(std::rand());
+    // const auto KScalar = 0.0;
+
+    Point2D point(KSourceX, KSourceY);
+
+    Point2D result = point / KScalar;
+
+    if (KScalar != 0.0) {
+      EXPECT_FLOAT_EQ(result.GetX(), KSourceX / KScalar);
+      EXPECT_FLOAT_EQ(result.GetY(), KSourceY / KScalar);
+    } else {
+      EXPECT_TRUE(std::isnan(result.GetX()));
+      EXPECT_TRUE(std::isnan(result.GetY()));
+    }
+  }
+}
+
 }  // namespace geometry
