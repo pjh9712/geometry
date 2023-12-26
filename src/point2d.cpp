@@ -43,4 +43,16 @@ auto Point2D::operator-(const Point2D& other) const -> Point2D {
   return {x_ - other.x_, y_ - other.y_};
 }
 
+auto Point2D::operator+=(const Point2D& other) -> Point2D& {
+  x_ += other.x_;
+  y_ += other.y_;
+  return *this;
+}
+
+auto Point2D::operator-=(const Point2D& other) -> Point2D& {
+  x_ -= other.x_;
+  y_ -= other.y_;
+  return *this;
+}
+
 }  // namespace geometry
