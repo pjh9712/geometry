@@ -58,4 +58,12 @@ auto Point2D::operator-=(const Point2D& other) -> Point2D& {
 auto Point2D::operator*(double scalar) const -> Point2D {
   return {x_ * scalar, y_ * scalar};
 }
+
+auto Point2D::operator/(double scalar) const -> Point2D {
+  if (scalar != 0.0) {
+    return {x_ / scalar, y_ / scalar};
+  }
+  return {std::numeric_limits<double>::quiet_NaN(),
+          std::numeric_limits<double>::quiet_NaN()};
+}
 }  // namespace geometry
