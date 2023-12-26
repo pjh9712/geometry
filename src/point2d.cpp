@@ -66,4 +66,8 @@ auto Point2D::operator/(double scalar) const -> Point2D {
   return {std::numeric_limits<double>::quiet_NaN(),
           std::numeric_limits<double>::quiet_NaN()};
 }
+
+auto Point2D::operator==(const Point2D& other) const -> bool {
+  return (x_ == other.x_) && (y_ == other.y_);
+}
 }  // namespace geometry
