@@ -30,4 +30,8 @@ auto Point2D::CalculateDistance(const Point2D& lhs, const Point2D& rhs)
 auto Point2D::GetX() const -> double { return x_; }
 
 auto Point2D::GetY() const -> double { return y_; }
+
+auto Point2D::SetX(double input_x) -> void { x_ = input_x; }
+
+auto Point2D::SetY(double input_y) -> void { y_ = input_y; }
 }  // namespace geometry
