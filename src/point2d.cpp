@@ -55,4 +55,7 @@ auto Point2D::operator-=(const Point2D& other) -> Point2D& {
   return *this;
 }
 
+auto Point2D::operator*(double scalar) const -> Point2D {
+  return {x_ * scalar, y_ * scalar};
+}
 }  // namespace geometry
