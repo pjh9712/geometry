@@ -35,8 +35,12 @@ auto Point2D::SetX(double input_x) -> void { x_ = input_x; }
 
 auto Point2D::SetY(double input_y) -> void { y_ = input_y; }
 
-auto Point2D::operator+(const Point2D &other) const -> Point2D {
+auto Point2D::operator+(const Point2D& other) const -> Point2D {
   return {x_ + other.x_, y_ + other.y_};
+}
+
+auto Point2D::operator-(const Point2D& other) const -> Point2D {
+  return {x_ - other.x_, y_ - other.y_};
 }
 
 }  // namespace geometry
