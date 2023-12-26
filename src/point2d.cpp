@@ -18,8 +18,7 @@ namespace geometry {
 Point2D::Point2D(double input_x, double input_y) : x_(input_x), y_(input_y) {}
 
 auto Point2D::CalculateDistance(const Point2D& target) const -> double {
-  return std::sqrt(std::pow((x_ - target.x_), 2) +
-                   std::pow((y_ - target.y_), 2));
+  return Point2D::CalculateDistance(*this, target);
 }
 
 auto Point2D::CalculateDistance(const Point2D& lhs, const Point2D& rhs)
