@@ -9,6 +9,10 @@
 
 #include "gtest/gtest.h"
 
+namespace {
+constexpr uint32_t kTestCount = 10000U;
+}
+
 namespace geometry {
 TEST(GeometryPoint2D, Constructor) {
   Point2D point1;
@@ -24,16 +28,19 @@ TEST(GeometryPoint2D, AssigmentOperator) {
 }
 
 TEST(GeometryPoint2D, CalculateDistance) {
-  constexpr double kSourceX = 1.0;
-  constexpr double kSourceY = 2.0;
-  constexpr double kTargetX = 4.0;
-  constexpr double kTargetY = 6.0;
+  for (uint32_t i = 0; i < kTestCount; ++i) {
+    const auto KSourceX = static_cast<double>(std::rand());
+    const auto KSourceY = static_cast<double>(std::rand());
+    const auto KTargetX = static_cast<double>(std::rand());
+    const auto KTargetY = static_cast<double>(std::rand());
 
-  Point2D source(kSourceX, kSourceY);
-  Point2D target(kTargetX, kTargetY);
+    Point2D source(KSourceX, KSourceY);
+    Point2D target(KTargetX, KTargetY);
 
-  EXPECT_FLOAT_EQ(std::sqrt((kSourceX - kTargetX) * (kSourceX - kTargetX) +
-                            (kSourceY - kTargetY) * (kSourceY - kTargetY)),
-                  source.CalculateDistance(target));
+    EXPECT_FLOAT_EQ(std::sqrt((KSourceX - KTargetX) * (KSourceX - KTargetX) +
+                              (KSourceY - KTargetY) * (KSourceY - KTargetY)),
+                    source.CalculateDistance(target));
+  }
 }
+
 }  // namespace geometry
