@@ -21,7 +21,7 @@ TEST(GeometryPoint2D, Constructor) {
   Point2D point4(std::move(Point2D()));
 }
 
-TEST(GeometryPoint2D, AssigmentOperator) {
+TEST(GeometryPoint2D, AssignmentOperator) {
   Point2D point1;
   auto point2 = point1;
   auto point3 = std::move(Point2D());
