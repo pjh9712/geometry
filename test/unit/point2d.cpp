@@ -59,4 +59,25 @@ TEST(GeometryPoint2D, StaticCalculateDistance) {
   }
 }
 
+TEST(GeometryPoint2D, GetX) {
+  for (uint32_t i = 0; i < kTestCount; ++i) {
+    const auto KSourceX = static_cast<double>(std::rand());
+
+    Point2D source(KSourceX, 0.0);
+
+    EXPECT_FLOAT_EQ(KSourceX, source.GetX());
+  }
+}
+
+TEST(GeometryPoint2D, GetY) {
+  constexpr uint32_t kTestCount = 10000U;
+  for (uint32_t i = 0; i < kTestCount; ++i) {
+    const auto KSourceY = static_cast<double>(std::rand());
+
+    Point2D source(0.0, KSourceY);
+
+    EXPECT_FLOAT_EQ(KSourceY, source.GetY());
+  }
+}
+
 }  // namespace geometry
