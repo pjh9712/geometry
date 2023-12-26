@@ -137,4 +137,28 @@ TEST(GeometryPoint2D, SubtractionOperator) {
     EXPECT_FLOAT_EQ(result.GetY(), KSourceY1 - KSourceY2);
   }
 }
+
+TEST(GeometryPoint2D, CompoundOperators) {
+  for (uint32_t i = 0; i < kTestCount; ++i) {
+    const auto KSourceX1 = static_cast<double>(std::rand());
+    const auto KSourceY1 = static_cast<double>(std::rand());
+    const auto KSourceX2 = static_cast<double>(std::rand());
+    const auto KSourceY2 = static_cast<double>(std::rand());
+
+    Point2D point1(KSourceX1, KSourceY1);
+    Point2D point2(KSourceX2, KSourceY2);
+
+    Point2D result_add = point1;
+    result_add += point2;
+
+    Point2D result_subtract = point1;
+    result_subtract -= point2;
+
+    EXPECT_FLOAT_EQ(result_add.GetX(), KSourceX1 + KSourceX2);
+    EXPECT_FLOAT_EQ(result_add.GetY(), KSourceY1 + KSourceY2);
+
+    EXPECT_FLOAT_EQ(result_subtract.GetX(), KSourceX1 - KSourceX2);
+    EXPECT_FLOAT_EQ(result_subtract.GetY(), KSourceY1 - KSourceY2);
+  }
+}
 }  // namespace geometry
