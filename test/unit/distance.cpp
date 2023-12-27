@@ -13,4 +13,10 @@ TEST(GeometryDistance, Constructor) {
   Distance distance3(std::move(Distance()));
 }
 
+TEST(GeometryDistance, AssignmentOperator) {
+  Distance distance1;
+  auto distance2 = distance1;
+  auto distance3 = std::move(Distance());
+}
+
 }  // namespace geometry
