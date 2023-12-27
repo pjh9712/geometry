@@ -105,4 +105,9 @@ auto Distance::operator-(const Distance &other) const -> Distance {
                   Type::kNanometer);
 }
 
+auto Distance::operator*(double scale) const -> Distance {
+  double result = static_cast<double>(nanometer_) * scale;
+  return Distance(result, Type::kNanometer);
+}
+
 }  // namespace geometry
