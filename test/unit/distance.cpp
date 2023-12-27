@@ -197,4 +197,15 @@ TEST(GeometryDistance, OperatorSubtract) {
                    0.0);
 }
 
+TEST(GeometryDistance, OperatorMultiply) {
+  const auto KInputValue = static_cast<double>(2038.0);
+  Distance distance(KInputValue, Distance::Type::kKilometer);
+
+  const double Scale = 2.5;
+  Distance result = distance * Scale;
+
+  EXPECT_DOUBLE_EQ(result.GetValue(Distance::Type::kKilometer),
+                   distance.GetValue(Distance::Type::kKilometer) * Scale);
+}
+
 }  // namespace geometry
