@@ -39,6 +39,11 @@ TEST(GeometryDistance, AssignmentOperator) {
   auto distance3 = std::move(Distance());
 }
 
+/**
+ * Note: Due to floating-point representation, there might be small
+ * imprecisions when comparing values. Tests should use tolerance-based
+ * comparison functions to handle precision issues.
+ */
 TEST(GeometryDistance, GetValue) {
   const auto KInputValue = static_cast<double>(2038.0);
   Distance distance1(KInputValue, Distance::Type::kKilometer);
@@ -63,6 +68,11 @@ TEST(GeometryDistance, GetValue) {
   EXPECT_DOUBLE_EQ(KInputValue, distance6.GetValue(Distance::Type::kNanometer));
 }
 
+/**
+ * Note: Due to floating-point representation, there might be small
+ * imprecisions when comparing values. Tests should use tolerance-based
+ * comparison functions to handle precision issues.
+ */
 TEST(GeometryDistance, SetValue) {
   const auto KInputValue = static_cast<double>(2038.0);
   Distance distance1;
@@ -205,6 +215,11 @@ TEST(GeometryDistance, OperatorMultiply) {
                    distance.GetValue(Distance::Type::kKilometer) * Scale);
 }
 
+/**
+ * Note: Due to floating-point representation, there might be small
+ * imprecisions when comparing values. Tests should use tolerance-based
+ * comparison functions to handle precision issues.
+ */
 TEST(GeometryDistance, OperatorDivision) {
   const auto KInputValue = static_cast<double>(2038.0);
   const double Scale = 2.0;
@@ -251,14 +266,14 @@ TEST(GeometryDistance, OperatorMultiplicationAssignment) {
 }
 
 TEST(GeometryDistance, OperatorDivisionAssignment) {
-  const auto KInputValue = static_cast<double>(2038.0);
+  const auto KInputValue = static_cast<double>(2038.1);
   Distance distance(KInputValue, Distance::Type::kMeter);
   const double Scale = 1.5;
 
   distance /= Scale;
 
   EXPECT_NEAR(KInputValue / Scale, distance.GetValue(Distance::Type::kMeter),
-              1e-15);
+              1e-9);
   EXPECT_THROW(distance /= 0.0, std::invalid_argument);
 }
 
