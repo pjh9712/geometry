@@ -126,4 +126,16 @@ TEST(GeometryDistance, OperatorLessThan) {
   EXPECT_TRUE(distance_by_nano < distance);
 }
 
+TEST(GeometryDistance, OperatorLessThanOrEqual) {
+  const auto KInputValue = static_cast<double>(2038.0);
+  Distance distance_by_kilo(KInputValue, Distance::Type::kKilometer);
+  Distance distance(KInputValue, Distance::Type::kMeter);
+  Distance distance_by_nano(KInputValue, Distance::Type::kNanometer);
+
+  EXPECT_TRUE(distance <= distance_by_kilo);
+  EXPECT_TRUE(distance <= distance);
+  EXPECT_TRUE(distance_by_nano <= distance_by_kilo);
+  EXPECT_TRUE(distance_by_nano <= distance);
+}
+
 }  // namespace geometry
