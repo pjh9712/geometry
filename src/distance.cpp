@@ -131,4 +131,12 @@ auto Distance::operator*=(double scale) -> void {
   nanometer_ = static_cast<int64_t>(result);
 }
 
+auto Distance::operator/=(double scale) -> void {
+  if (scale == 0.0) {
+    throw std::invalid_argument("Invalid input: Division by zero");
+  }
+  double result = static_cast<double>(nanometer_) / scale;
+  nanometer_ = static_cast<int64_t>(result);
+}
+
 }  // namespace geometry
