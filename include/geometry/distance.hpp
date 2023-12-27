@@ -140,6 +140,13 @@ class Distance {
    */
   auto operator+(const Distance& other) const -> Distance;
 
+  /**
+   * @brief Subtract other distance object.
+   * @param other The other distance object.
+   * @return Distance The result of subtraction.
+   */
+  auto operator-(const Distance& other) const -> Distance;
+
  protected:
  private:
   int64_t nanometer_{0};  ///< Nanometer
