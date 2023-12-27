@@ -92,6 +92,14 @@ class Distance {
    */
   auto operator==(const Distance& other) const -> bool;
 
+  /**
+   * @brief Compare with other distance object for inequality.
+   * @param other The other distance object.
+   * @return true If not equal.
+   * @return false If equal.
+   */
+  auto operator!=(const Distance& other) const -> bool;
+
  protected:
  private:
   int64_t nanometer_{0};  ///< Nanometer
