@@ -179,4 +179,22 @@ TEST(GeometryDistance, OperatorAdd) {
                    KInputValue * 2.0);
 }
 
+TEST(GeometryDistance, OperatorSubtract) {
+  const auto KInputValue = static_cast<double>(2038.0);
+  Distance distance_by_kilo(KInputValue, Distance::Type::kKilometer);
+  Distance distance(KInputValue * 1.0e+3, Distance::Type::kMeter);
+  Distance distance_by_nano(KInputValue * 1.0e+12, Distance::Type::kNanometer);
+
+  const auto Distance1 = distance_by_kilo - distance;
+  const auto Distance2 = distance_by_kilo - distance_by_nano;
+  const auto Distance3 = distance - distance_by_nano;
+
+  EXPECT_DOUBLE_EQ(Distance1.GetValue(Distance::Type::kKilometer),
+                   0.0);
+  EXPECT_DOUBLE_EQ(Distance2.GetValue(Distance::Type::kKilometer),
+                   0.0);
+  EXPECT_DOUBLE_EQ(Distance3.GetValue(Distance::Type::kKilometer),
+                   0.0);
+}
+
 }  // namespace geometry
