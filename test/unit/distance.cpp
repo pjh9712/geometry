@@ -250,4 +250,16 @@ TEST(GeometryDistance, OperatorMultiplicationAssignment) {
                    distance.GetValue(Distance::Type::kMeter));
 }
 
+TEST(GeometryDistance, OperatorDivisionAssignment) {
+  const auto KInputValue = static_cast<double>(2038.0);
+  Distance distance(KInputValue, Distance::Type::kMeter);
+  const double Scale = 1.5;
+
+  distance /= Scale;
+
+  EXPECT_NEAR(KInputValue / Scale, distance.GetValue(Distance::Type::kMeter),
+              1e-15);
+  EXPECT_THROW(distance /= 0.0, std::invalid_argument);
+}
+
 }  // namespace geometry
