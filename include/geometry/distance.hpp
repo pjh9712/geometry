@@ -158,6 +158,7 @@ class Distance {
    * @brief Divide by a scale factor.
    * @param scale The scale factor.
    * @return Distance The result of division.
+   * @throws std::invalid_argument If the scale factor is zero.
    */
   auto operator/(double scale) const -> Distance;
 
