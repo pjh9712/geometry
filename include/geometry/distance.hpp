@@ -178,6 +178,14 @@ class Distance {
    */
   auto operator-=(const Distance& other) -> void;
 
+  /**
+   * @brief Multiply the current distance by a scale factor.
+   * @param scale The scale factor to multiply the distance by.
+   * @return void Modify the current distance object by multiplying its distance
+   * by the specified scale factor.
+   */
+  auto operator*=(double scale) -> void;
+
  protected:
  private:
   int64_t nanometer_{0};  ///< Nanometer
