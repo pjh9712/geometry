@@ -189,12 +189,9 @@ TEST(GeometryDistance, OperatorSubtract) {
   const auto Distance2 = distance_by_kilo - distance_by_nano;
   const auto Distance3 = distance - distance_by_nano;
 
-  EXPECT_DOUBLE_EQ(Distance1.GetValue(Distance::Type::kKilometer),
-                   0.0);
-  EXPECT_DOUBLE_EQ(Distance2.GetValue(Distance::Type::kKilometer),
-                   0.0);
-  EXPECT_DOUBLE_EQ(Distance3.GetValue(Distance::Type::kKilometer),
-                   0.0);
+  EXPECT_DOUBLE_EQ(Distance1.GetValue(Distance::Type::kKilometer), 0.0);
+  EXPECT_DOUBLE_EQ(Distance2.GetValue(Distance::Type::kKilometer), 0.0);
+  EXPECT_DOUBLE_EQ(Distance3.GetValue(Distance::Type::kKilometer), 0.0);
 }
 
 TEST(GeometryDistance, OperatorMultiply) {
@@ -206,6 +203,17 @@ TEST(GeometryDistance, OperatorMultiply) {
 
   EXPECT_DOUBLE_EQ(result.GetValue(Distance::Type::kKilometer),
                    distance.GetValue(Distance::Type::kKilometer) * Scale);
+}
+
+TEST(GeometryDistance, OperatorDivision) {
+  const auto KInputValue = static_cast<double>(2038.0);
+  const double Scale = 2.0;
+
+  Distance distance(KInputValue, Distance::Type::kNanometer);
+  Distance result = distance / Scale;
+  EXPECT_DOUBLE_EQ(result.GetValue(Distance::Type::kNanometer),
+                   KInputValue / Scale);
+  EXPECT_THROW(distance / 0.0, std::invalid_argument);
 }
 
 }  // namespace geometry
