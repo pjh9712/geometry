@@ -42,15 +42,15 @@ Distance::Distance(double input_value, Type input_type)
 auto Distance::GetValue(const Type &input_type) const -> double {
   auto result{static_cast<double>(nanometer_)};
   if (input_type == geometry::Distance::Type::kKilometer) {
-    result = result / 1.0e+12;
+    result = result * 1.0e-12;
   } else if (input_type == geometry::Distance::Type::kMeter) {
-    result = result / 1.0e+9;
+    result = result * 1.0e-9;
   } else if (input_type == geometry::Distance::Type::kCentimeter) {
-    result = result / 1.0e+7;
+    result = result * 1.0e-7;
   } else if (input_type == geometry::Distance::Type::kMillimeter) {
-    result = result / 1.0e+6;
+    result = result * 1.0e-6;
   } else if (input_type == geometry::Distance::Type::kMicrometer) {
-    result = result / 1.0e+3;
+    result = result * 1.0e-3;
   }
   return result;
 }
