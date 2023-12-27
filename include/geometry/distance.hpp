@@ -116,6 +116,14 @@ class Distance {
    */
   auto operator<=(const Distance& other) const -> bool;
 
+  /**
+   * @brief Compare with other distance object to check if greater than.
+   * @param other The other distance object.
+   * @return true If greater than.
+   * @return false If not greater than.
+   */
+  auto operator>(const Distance& other) const -> bool;
+
  protected:
  private:
   int64_t nanometer_{0};  ///< Nanometer
