@@ -122,4 +122,8 @@ auto Distance::operator+=(const Distance& other) -> void {
     nanometer_ += other.nanometer_;
 }
 
+auto Distance::operator-=(const Distance& other) -> void {
+    nanometer_ -= other.nanometer_;
+}
+
 }  // namespace geometry
