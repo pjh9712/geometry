@@ -13,6 +13,8 @@
 #ifndef GEOMETRY__Distance_HPP_
 #define GEOMETRY__Distance_HPP_
 
+#include <cstdint>
+
 namespace geometry {
 /**
  * @brief The class for abstract distance
@@ -31,8 +33,32 @@ class Distance {
     kNanometer = 5    ///< Nanometer
   };
 
+  /**
+   * @brief Construct a new Distance object.
+   */
+  Distance() = default;
+
+  explicit Distance(double input_value, Type input_type = Type::kMeter);
+
+  /**
+   * @brief The copy constructor.
+   * @param other The other distance object.
+   */
+  Distance(const Distance& other) = default;
+  /**
+   * @brief The move constructor.
+   * @param other The other distance object.
+   */
+  Distance(Distance&& other) noexcept = default;
+
+  /**
+   * @brief Destroy the Distance object.
+   */
+  virtual ~Distance() = default;
+
  protected:
  private:
+  int64_t nanometer_{0};  ///< Nanometer
 };
 
 }  // namespace geometry
