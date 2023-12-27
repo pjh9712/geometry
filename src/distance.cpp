@@ -16,19 +16,31 @@
 #include <tuple>
 
 namespace {
+constexpr int64_t kKilometerToNanometer{static_cast<int64_t>(1.0e+12)};
+constexpr int64_t kMeterToNanometer{static_cast<int64_t>(1.0e+9)};
+constexpr int64_t kCentimeterToNanometer{static_cast<int64_t>(1.0e+7)};
+constexpr int64_t kMillimeterToNanometer{static_cast<int64_t>(1.0e+6)};
+constexpr int64_t kMicrometerToNanometer{static_cast<int64_t>(1.0e+3)};
+
+constexpr double kNanometerToKilometer{1.0e-12};
+constexpr double kNanometerToMeter{1.0e-9};
+constexpr double kNanometerToCentimeter{1.0e-7};
+constexpr double kNanometerToMillimeter{1.0e-6};
+constexpr double kNanometerToMicrometer{1.0e-3};
+
 auto ScaleDistanceToNanometer(double input_value,
                               geometry::Distance::Type input_type) -> int64_t {
   int64_t result{static_cast<int64_t>(input_value)};
   if (input_type == geometry::Distance::Type::kKilometer) {
-    result = static_cast<int64_t>(input_value * 1.0e+12);
+    result = static_cast<int64_t>(input_value * kKilometerToNanometer);
   } else if (input_type == geometry::Distance::Type::kMeter) {
-    result = static_cast<int64_t>(input_value * 1.0e+9);
+    result = static_cast<int64_t>(input_value * kMeterToNanometer);
   } else if (input_type == geometry::Distance::Type::kCentimeter) {
-    result = static_cast<int64_t>(input_value * 1.0e+7);
+    result = static_cast<int64_t>(input_value * kCentimeterToNanometer);
   } else if (input_type == geometry::Distance::Type::kMillimeter) {
-    result = static_cast<int64_t>(input_value * 1.0e+6);
+    result = static_cast<int64_t>(input_value * kMillimeterToNanometer);
   } else if (input_type == geometry::Distance::Type::kMicrometer) {
-    result = static_cast<int64_t>(input_value * 1.0e+3);
+    result = static_cast<int64_t>(input_value * kMicrometerToNanometer);
   }
   return result;
 }
@@ -42,15 +54,15 @@ Distance::Distance(double input_value, Type input_type)
 auto Distance::GetValue(const Type &input_type) const -> double {
   auto result{static_cast<double>(nanometer_)};
   if (input_type == geometry::Distance::Type::kKilometer) {
-    result = result * 1.0e-12;
+    result = result * kNanometerToKilometer;
   } else if (input_type == geometry::Distance::Type::kMeter) {
-    result = result * 1.0e-9;
+    result = result * kNanometerToMeter;
   } else if (input_type == geometry::Distance::Type::kCentimeter) {
-    result = result * 1.0e-7;
+    result = result * kNanometerToCentimeter;
   } else if (input_type == geometry::Distance::Type::kMillimeter) {
-    result = result * 1.0e-6;
+    result = result * kNanometerToMillimeter;
   } else if (input_type == geometry::Distance::Type::kMicrometer) {
-    result = result * 1.0e-3;
+    result = result * kNanometerToMicrometer;
   }
   return result;
 }
