@@ -63,4 +63,34 @@ TEST(GeometryDistance, GetValue) {
   EXPECT_DOUBLE_EQ(KInputValue, distance6.GetValue(Distance::Type::kNanometer));
 }
 
+TEST(GeometryDistance, SetValue) {
+  const auto KInputValue = static_cast<double>(2038.0);
+  Distance distance1;
+  distance1.SetValue(KInputValue, Distance::Type::kKilometer);
+  EXPECT_DOUBLE_EQ(KInputValue, distance1.GetValue(Distance::Type::kKilometer));
+
+  Distance distance2;
+  distance2.SetValue(KInputValue, Distance::Type::kMeter);
+  EXPECT_DOUBLE_EQ(KInputValue, distance2.GetValue(Distance::Type::kMeter));
+
+  Distance distance3;
+  distance3.SetValue(KInputValue, Distance::Type::kCentimeter);
+  EXPECT_DOUBLE_EQ(KInputValue,
+                   distance3.GetValue(Distance::Type::kCentimeter));
+
+  Distance distance4;
+  distance4.SetValue(KInputValue, Distance::Type::kMillimeter);
+  EXPECT_DOUBLE_EQ(KInputValue,
+                   distance4.GetValue(Distance::Type::kMillimeter));
+
+  Distance distance5;
+  distance5.SetValue(KInputValue, Distance::Type::kMicrometer);
+  EXPECT_DOUBLE_EQ(KInputValue,
+                   distance5.GetValue(Distance::Type::kMicrometer));
+
+  Distance distance6;
+  distance6.SetValue(KInputValue, Distance::Type::kNanometer);
+  EXPECT_DOUBLE_EQ(KInputValue, distance6.GetValue(Distance::Type::kNanometer));
+}
+
 }  // namespace geometry
