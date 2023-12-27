@@ -216,4 +216,15 @@ TEST(GeometryDistance, OperatorDivision) {
   EXPECT_THROW(distance / 0.0, std::invalid_argument);
 }
 
+TEST(GeometryDistance, OperatorAdditionAssignment) {
+    const auto KInputValue = static_cast<double>(2038.0);
+    Distance distance(KInputValue, Distance::Type::kMeter);
+    Distance other_distance(KInputValue * 2.0, Distance::Type::kMeter);
+
+    distance += other_distance;
+
+    // Add assertions to validate the result
+    EXPECT_DOUBLE_EQ(3 * KInputValue, distance.GetValue(Distance::Type::kMeter));
+}
+
 }  // namespace geometry
