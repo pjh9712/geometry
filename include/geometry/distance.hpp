@@ -70,6 +70,13 @@ class Distance {
    */
   auto operator=(Distance&& other) -> Distance& = default;
 
+  /**
+   * @brief Get the Distance value for distance type.
+   * @param input_type The distance type.
+   * @return double The distance value.
+   */
+  [[nodiscard]] auto GetValue(const Type& input_type) const -> double;
+
  protected:
  private:
   int64_t nanometer_{0};  ///< Nanometer
