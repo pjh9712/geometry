@@ -133,6 +133,13 @@ class Distance {
    */
   auto operator>=(const Distance& other) const -> bool;
 
+  /**
+   * @brief Add other distance object.
+   * @param other The other distance object.
+   * @return Distance The result of addition.
+   */
+  auto operator+(const Distance& other) const -> Distance;
+
  protected:
  private:
   int64_t nanometer_{0};  ///< Nanometer
