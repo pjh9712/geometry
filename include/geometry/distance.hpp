@@ -186,6 +186,15 @@ class Distance {
    */
   auto operator*=(double scale) -> void;
 
+  /**
+   * @brief Divide the current distance by a scale factor.
+   * @param scale The scale factor to divide the distance by.
+   * @return void Modify the current distance object by dividing its distance
+   * by the specified scale factor.
+   * @throws std::invalid_argument If the scale factor is zero.
+   */
+  auto operator/=(double scale) -> void;
+
  protected:
  private:
   int64_t nanometer_{0};  ///< Nanometer
