@@ -217,25 +217,37 @@ TEST(GeometryDistance, OperatorDivision) {
 }
 
 TEST(GeometryDistance, OperatorAdditionAssignment) {
-    const auto KInputValue = static_cast<double>(2038.0);
-    Distance distance(KInputValue, Distance::Type::kMeter);
-    Distance other_distance(KInputValue * 2.0, Distance::Type::kMeter);
+  const auto KInputValue = static_cast<double>(2038.0);
+  Distance distance(KInputValue, Distance::Type::kMeter);
+  Distance other_distance(KInputValue * 2.0, Distance::Type::kMeter);
 
-    distance += other_distance;
+  distance += other_distance;
 
-    // Add assertions to validate the result
-    EXPECT_DOUBLE_EQ(3 * KInputValue, distance.GetValue(Distance::Type::kMeter));
+  // Add assertions to validate the result
+  EXPECT_DOUBLE_EQ(3 * KInputValue, distance.GetValue(Distance::Type::kMeter));
 }
 
 TEST(GeometryDistance, OperatorSubtractionAssignment) {
-    const auto KInputValue = static_cast<double>(2038.0);
-    Distance distance(KInputValue, Distance::Type::kMeter);
-    Distance other_distance(KInputValue * 2.0, Distance::Type::kMeter);
+  const auto KInputValue = static_cast<double>(2038.0);
+  Distance distance(KInputValue, Distance::Type::kMeter);
+  Distance other_distance(KInputValue * 2.0, Distance::Type::kMeter);
 
-    distance -= other_distance;
+  distance -= other_distance;
 
-    // Add assertions to validate the result
-    EXPECT_DOUBLE_EQ(-1.0 * KInputValue, distance.GetValue(Distance::Type::kMeter));
+  // Add assertions to validate the result
+  EXPECT_DOUBLE_EQ(-1.0 * KInputValue,
+                   distance.GetValue(Distance::Type::kMeter));
+}
+
+TEST(GeometryDistance, OperatorMultiplicationAssignment) {
+  const auto KInputValue = static_cast<double>(2038.0);
+  Distance distance(KInputValue, Distance::Type::kMeter);
+  const double Scale = 1.5;
+
+  distance *= Scale;
+
+  EXPECT_DOUBLE_EQ(KInputValue * Scale,
+                   distance.GetValue(Distance::Type::kMeter));
 }
 
 }  // namespace geometry
