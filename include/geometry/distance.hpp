@@ -154,6 +154,13 @@ class Distance {
    */
   auto operator*(double scale) const -> Distance;
 
+  /**
+   * @brief Divide by a scale factor.
+   * @param scale The scale factor.
+   * @return Distance The result of division.
+   */
+  auto operator/(double scale) const -> Distance;
+
  protected:
  private:
   int64_t nanometer_{0};  ///< Nanometer
