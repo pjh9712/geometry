@@ -110,4 +110,12 @@ auto Distance::operator*(double scale) const -> Distance {
   return Distance(result, Type::kNanometer);
 }
 
+auto Distance::operator/(double scale) const -> Distance {
+  if (scale == 0.0) {
+    throw std::invalid_argument("Invalid input: Division by zero");
+  }
+
+  return Distance(static_cast<double>(nanometer_) / scale, Type::kNanometer);
+}
+
 }  // namespace geometry
