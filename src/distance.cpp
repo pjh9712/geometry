@@ -75,4 +75,8 @@ auto Distance::operator==(const Distance &other) const -> bool {
   return (nanometer_ == other.nanometer_);
 }
 
+auto Distance::operator!=(const Distance &other) const -> bool {
+  return (nanometer_ != other.nanometer_);
+}
+
 }  // namespace geometry
