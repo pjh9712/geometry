@@ -93,7 +93,7 @@ add_subdirectory(${${PROJECT_NAME}_APPLICATION_PATH})
 
 set(${PROJECT_NAME}_SOURCE_FILES
   src/point2d.cpp
-
+  src/distance.cpp
   # ! Add source files here
 )
 
@@ -113,7 +113,7 @@ ${${PROJECT_NAME}_INCLUDE_PATH}
 
 # ! Add include path here
 )
-include(cmake/create_documents.cmake)
+
 # target_link_libraries(${PROJECT_NAME} PRIVATE
 
 # ! Add libraries here
@@ -125,6 +125,8 @@ include(cmake/create_documents.cmake)
 target_compile_options(${PROJECT_NAME} PRIVATE
 ${CPP_COMFILE_FLAGS}
 )
+include(cmake/create_documents.cmake)
+add_subdirectory(${${PROJECT_NAME}_TEST_PATH})
 message(STATUS)
 message(STATUS "Finished all process in ${PROJECT_NAME} CMakeLists.txt.")
 message(STATUS)

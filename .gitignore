@@ -4,6 +4,9 @@ build/**
 # Thirdparty
 thirdparty/install/**
 
+# Documentation
+documents/**
+
 # VSCode
 .vscode/**
 .idea/**
